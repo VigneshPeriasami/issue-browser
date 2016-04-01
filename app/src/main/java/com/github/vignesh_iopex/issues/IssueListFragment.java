@@ -46,11 +46,23 @@ public class IssueListFragment extends Fragment implements IssueListRenderer,
   @Override public void onViewCreated(View view, Bundle savedInstanceState) {
     super.onViewCreated(view, savedInstanceState);
     injectViews(view);
-    downloadIssues();
+
+    if (savedInstanceState == null || !restoreInstanceState(savedInstanceState)) {
+      downloadIssues();
+    }
   }
 
   @Override public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
     inflater.inflate(R.menu.main_menu, menu);
+  }
+
+  private boolean restoreInstanceState(Bundle savedState) {
+    return presenter.restoreInstanceState(savedState);
+  }
+
+  @Override public void onSaveInstanceState(Bundle outState) {
+    super.onSaveInstanceState(outState);
+    presenter.saveInstanceState(outState);
   }
 
   private void downloadIssues() {
