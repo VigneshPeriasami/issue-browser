@@ -1,0 +1,27 @@
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:1.3.0'
+    }
+}
+
+allprojects {
+    repositories {
+        jcenter()
+    }
+}
+
+ext {
+
+}
+
+ext.libraries = [
+        v7Support: 'com.android.support:appcompat-v7:23.1.1',
+        junit: 'junit:junit:4.11'
+]
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}

@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Issues</string>
+    <string name="action_refresh">refresh</string>
+</resources>
